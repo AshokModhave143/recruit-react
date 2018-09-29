@@ -1,0 +1,47 @@
+.menubar {
+    position: fixed;
+    width: 100%;
+    background: purple;
+    height: 56px;
+    top: 0;
+    left: 0;
+}
+
+.menubar-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1.2rem;
+}
+
+.menubar-logo {
+    margin-left: 1rem;
+}
+
+.menubar-logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.menubar-nav-items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.menubar-nav-items li {
+    padding: 0 0.5rem;
+}
+.menubar-nav-items a {
+    color: white;
+    text-decoration: none
+}
+.menubar-nav-items a:hover,
+.menubar-nav-items a:active {
+    color: orange;
+}
+
+.spacer {
+    flex: 1;
+}
