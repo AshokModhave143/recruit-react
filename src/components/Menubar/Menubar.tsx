@@ -2,13 +2,13 @@ import * as React from "react";
 import { DrawerToggleButton } from "./../SideDrawer/DrawerToggleButton";
 import './Menubar.css';
 
-export interface IMenubar { props: any };
+export interface IMenubar { drawerClickHandler: any };
 
 export const Menubar = (props: IMenubar) => (
     <header className="menubar">
             <nav className="menubar-nav">
                 <div>
-                    <DrawerToggleButton props={{}}/>
+                    <DrawerToggleButton {...props} />
                 </div>
                 <div className="menubar-logo"><a href="#">LOGO</a></div>
                 <div className="spacer">{''}</div>
