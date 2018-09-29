@@ -1,7 +1,13 @@
 import * as React from "react";
+import "./SideDrawer.css";
 
 export interface ISideDrawer { props: any };
 
 export const SideDrawer = (props: ISideDrawer) => (
-    <div>This is Side drawer component</div>
+    <nav className="side-drawer">
+        <ul>
+            <li><a href="#">Registration</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
 );
