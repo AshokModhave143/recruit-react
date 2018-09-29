@@ -11,7 +11,11 @@ class App extends React.Component <any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      sideDrawerOpen: false
+      sideDrawerOpen: false,
+      user: {
+        name: "John",
+        role: "Manager"
+      }
     };
   }
 
@@ -41,7 +45,7 @@ class App extends React.Component <any, any> {
     }
     return (
       <div className="App">
-        <Menubar drawerClickHandler={this.drawerToggleClickHandler} />
+        <Menubar drawerClickHandler={this.drawerToggleClickHandler} user={this.state.user}/>
         {sideDrawer}
         {backDrop}
         <main className="App-main">

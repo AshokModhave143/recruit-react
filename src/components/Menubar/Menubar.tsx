@@ -2,7 +2,7 @@ import * as React from "react";
 import { DrawerToggleButton } from "./../SideDrawer/DrawerToggleButton";
 import './Menubar.css';
 
-export interface IMenubar { drawerClickHandler: any };
+export interface IMenubar { drawerClickHandler: any, user: any };
 
 export const Menubar = (props: IMenubar) => (
     <header className="menubar">
@@ -14,8 +14,7 @@ export const Menubar = (props: IMenubar) => (
                 <div className="spacer">{''}</div>
                 <div className="menubar-nav-items">
                     <ul>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">User</a></li>
+                        <li><div className="user">Welcome, {props.user.name}</div></li>
                     </ul>
                 </div>
             </nav>
