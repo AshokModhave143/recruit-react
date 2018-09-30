@@ -18,11 +18,33 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.14",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.3.2",
     "@types/node": "^10.10.3",
     "@types/react": "^16.4.14",
     "@types/react-datepicker": "^1.1.7",
     "@types/react-dom": "^16.0.7",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "react-test-renderer": "^16.5.2",
     "typescript": "^3.0.3"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/tools/test-shim.js",
+      "<rootDir>/tools/test-setup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/tools/test-preprocessor.js"
+    },
+    "testMatch": [
+      "**/*.(ts|tsx|js)"
+    ]
   }
 }
