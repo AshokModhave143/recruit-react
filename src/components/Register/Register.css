@@ -1,0 +1,49 @@
+.register {
+    width: 100%;
+}
+.register .register-title {
+    text-decoration: none;
+    font-size: 1.7rem;
+    align-items: center;
+}
+.register .register-form {
+    margin: 0 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    position: fixed;
+}
+.register-form-content {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid black;
+}
+.register-formgroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.register-formgroup label {
+    width: 50%;
+    margin: 1rem 0.5rem;
+}
+.register-formgroup input {
+    width: 50%;
+    height: 25px;
+}
+.register-formgroup .react-date-picker {
+    width: 50%;
+    justify-content: left;
+}
+.register-formgroup span {
+    position: relative;
+}
+.register-submit-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.3rem;
+    margin-bottom: 0.2rem;
+}

@@ -4,7 +4,7 @@ import './App.css';
 // Custom Components Import
 import { Backdrop } from "./components/Backdrop/Backdrop";
 import { Menubar } from "./components/Menubar/Menubar";
-import { Register } from "./components/Register/Register";
+import { RegisterForm } from "./components/Register/RegisterForm";
 import { SideDrawer } from "./components/SideDrawer/SideDrawer";
 
 class App extends React.Component <any, any> {
@@ -52,7 +52,7 @@ class App extends React.Component <any, any> {
         {sideDrawer}
         {backDrop}
         <main style={{marginTop: '65px'}}>
-          <Register />
+          <RegisterForm user={this.state.user}/>
         </main>
       </div>
     );
