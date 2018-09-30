@@ -68,7 +68,7 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                                 />
                                 <span style={{color: 'red'}}>{errors.ccNumberError}</span>
                             </div>
-                            <div className="register-formgroup">
+                            <div>
                                 <label>CVC</label>
                                 <input 
                                     type="text"
@@ -80,7 +80,7 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                                 />
                                 <span style={{color: 'red'}}> {errors.cvcError}</span>
                             </div>
-                            <div className="register-formgroup">        
+                            <div>        
                                 <label>Expiry Date</label>
                                 <ReactDatePicker
                                     selected={values.expiryDate}
@@ -92,7 +92,7 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                                 />
                                 <span style={{color: 'red'}}>{errors.expiryDateError}</span>
                             </div>
-                            <div className="register-submit-btn">
+                            <div>
                                 <Button type="submit" color="primary" variant="contained">Submit</Button>
                             </div>
                         </div>
