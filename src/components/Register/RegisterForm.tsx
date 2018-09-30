@@ -54,9 +54,9 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                 <div className="register">
                     <h1 className="register-title">Welcome, {user.firstName}</h1>
                     <form onSubmit={this.handleSubmit} noValidate={true} className="register-form">
-                        { submitSuccess ? <span style={{color: 'green'}}>Card registration successful</span> : ""}
-                        <div style={{display: 'flex', flexDirection: 'column'}} className="register-form-content">
-                            <div className="register-formgroup">
+                        { submitSuccess ? <span style={{color: 'green'}}>Card registration successful</span> : ''}
+                        <div>
+                            <div>
                                 <label>Credit Card Number</label>
                                 <input 
                                     type="text"
@@ -87,7 +87,8 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                                     onChange={this.handleDateChange}
                                     id="expiry_date"       
                                     required={true}   
-                                    className="react-date-picker"                                              
+                                    className="react-date-picker"   
+                                    dateFormat="MM/DD/YYYY"                                           
                                 />
                                 <span style={{color: 'red'}}>{errors.expiryDateError}</span>
                             </div>
@@ -129,13 +130,15 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
      * Handle Date change in Date picker
      * @param {Date} date selected date in React Date picker
      */
-    private handleDateChange = async (date: moment.Moment): Promise<void> => {
+    private handleDateChange = async (date: any): Promise<void> => {
         this.setState(prevState => ({
             values: {
                 ...prevState.values,
                 expiryDate: date
             }
         }));
+        // tslint:disable-next-line:no-console
+        console.log(this.state.values.expiryDate);
     };
     
     /**
@@ -150,7 +153,10 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
             this.setState({
                 submitSuccess
             });
+            this.resetForm();
         }
+        // tslint:disable-next-line:no-console
+        console.log(this.state);
     };
 
     /**
@@ -168,6 +174,17 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
         }));
     };
 
+    private resetForm = () => {
+        this.clearErrors();
+        this.setState({
+            values: {
+                creditCardNumber: 0,
+                cvc: 0,
+                expiryDate: moment()
+            }
+        });
+    };
+
     /**
      * Validate form data
      */
@@ -175,8 +192,11 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
         const { values } = this.state;
         
         this.clearErrors();
+        this.setState({
+            submitSuccess: false
+        });
 
-        if(this.isEmptyField(values.creditCardNumber)) {
+        if(this.isEmptyField(values.creditCardNumber) || values.creditCardNumber === 0) {
             this.setState(prevState => ({
                 errors: {
                     ...prevState.errors,
@@ -184,8 +204,9 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                 },
                 isError: true
             }));
+            return false;
         }
-        if(this.isValidNumber(values.creditCardNumber)) {
+        if(this.isValidNumber(values.creditCardNumber) && values.creditCardNumber !== 0) {
             this.setState(prevState => ({
                 errors: {
                     ...prevState.errors,
@@ -193,9 +214,10 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                 },
                 isError: true
             }));
+            return false;
         }
 
-        if(this.isEmptyField(values.cvc)) {
+        if(this.isEmptyField(values.cvc) || values.cvc === 0) {
             this.setState(prevState => ({
                 errors: {
                     ...prevState.errors,
@@ -203,8 +225,9 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                 },
                 isError: true
             }));
+            return false;
         }
-        if(this.isValidNumber(values.cvc)) {
+        if(this.isValidNumber(values.cvc) && values.cvc !== 0) {
             this.setState(prevState => ({
                 errors: {
                     ...prevState.errors,
@@ -212,6 +235,7 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                 },
                 isError: true
             }));
+            return false;
         }
 
         if(this.isEmptyField(values.expiryDate)) {
@@ -222,6 +246,7 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                 },
                 isError: true
             }));
+            return false;
         }
         if(this.isValidDate(values.expiryDate)) {
             this.setState(prevState => ({
@@ -230,10 +255,11 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
                     expiryDateError: "Invalid expiry date"
                 },
                 isError: true
-            }))
+            }));
+            return false;
         }
         
-        return this.state.isError;
+        return true;
     };
 
     /**
@@ -254,21 +280,23 @@ export class RegisterForm extends React.Component <IRegisterFormProps, IRegister
      * Check if given value is valid date
      */
     private isValidDate = (value: any): boolean => {
-        // const s = moment(moment().toDate(), 'MM/DD/YYYY',true).isValid();
+        // const s = moment(value.format(), 'MM/DD/YYYY',true).isValid();
         // return s;
-        return false;
+        const dateFormat = 'MM/DD/YYYY';
+        const s = moment(moment(value.format()).format('MM/DD/YYYY'), 'MM/DD/YYYY',true).isValid();
+
+        // tslint:disable-next-line:no-console
+        console.log(moment("2018-09-30T22:51:43+13:00").format(dateFormat));
+        return !s;
     }
 
     /**
      * Submit the form data to API
      */
     private submitForm = async (): Promise<boolean> => {
-        if(!this.state.isError) {
-            // tslint:disable-next-line:no-console
-            console.log(this.state.values);
-            return true;
-        } else {
-            return false;
-        }
+        
+        // tslint:disable-next-line:no-console
+        console.log(this.state.values);
+        return true;
     };
 }
