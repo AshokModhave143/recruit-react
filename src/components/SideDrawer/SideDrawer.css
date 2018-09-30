@@ -16,12 +16,30 @@
     transform: translateX(0);
 }
 
+.side-drawer .menu-header {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    height: 30px;
+    width: 100%;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.side-drawer .menu-header .menu-header-title {
+    color: black;
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
 .side-drawer ul {
     height: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
 }
 
 .side-drawer li {
@@ -36,4 +54,8 @@
 .side-drawer a:hover,
 .side-drawer a:active {
     color: orange;
+}
+.back-arrow {
+    margin-left: 1rem;
+    cursor: pointer;
 }

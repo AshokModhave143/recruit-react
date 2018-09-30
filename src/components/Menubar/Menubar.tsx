@@ -10,11 +10,11 @@ export const Menubar = (props: IMenubar) => (
                 <div>
                     <DrawerToggleButton {...props} />
                 </div>
-                <div className="menubar-logo"><a href="#">LOGO</a></div>
+                <div className="menubar-logo"><a href="#">Register Card Form</a></div>
                 <div className="spacer">{''}</div>
                 <div className="menubar-nav-items">
                     <ul>
-                        <li><div className="user">Welcome, {props.user.name}</div></li>
+                        <li><div className="user">Welcome, {props.user.firstName}</div></li>
                     </ul>
                 </div>
             </nav>

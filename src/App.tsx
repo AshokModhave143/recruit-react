@@ -13,7 +13,8 @@ class App extends React.Component <any, any> {
     this.state = {
       sideDrawerOpen: false,
       user: {
-        name: "John",
+        firstName: "John",
+        lastName: "Smith",
         role: "Manager"
       }
     };
@@ -44,12 +45,14 @@ class App extends React.Component <any, any> {
       backDrop = <Backdrop click={this.backdropClickHandler} />;
     }
     return (
-      <div className="App">
-        <Menubar drawerClickHandler={this.drawerToggleClickHandler} user={this.state.user}/>
+      <div style={{height: '100%'}}>
+        <Menubar 
+          drawerClickHandler={this.drawerToggleClickHandler} 
+          user={this.state.user}/>
         {sideDrawer}
         {backDrop}
-        <main className="App-main">
-          <Register props={{}} />
+        <main style={{marginTop: '65px'}}>
+          <Register />
         </main>
       </div>
     );
